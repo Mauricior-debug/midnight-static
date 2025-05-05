@@ -1,0 +1,146 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 272 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 183 100% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 272 100% 50%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-neon-purple/20 selection:text-white;
+  }
+  
+  body {
+    @apply bg-midnight text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background: radial-gradient(ellipse at top, #090909, #050505), radial-gradient(ellipse at bottom, #0a0a0a, #050505);
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    @apply animate-glow;
+  }
+  
+  .text-glitch:hover {
+    @apply animate-glitch;
+  }
+  
+  .neon-border {
+    @apply border border-neon-purple shadow-neon;
+  }
+  
+  .neon-bg {
+    @apply bg-gradient-to-r from-neon-purple to-neon-blue bg-clip-text text-transparent;
+  }
+  
+  .glass-card {
+    @apply bg-midnight-100/70 backdrop-blur-md border border-white/10;
+  }
+}
+
+/* Custom font for title */
+@font-face {
+  font-family: 'Cyber';
+  src: url('https://fonts.gstatic.com/s/chakrapetch/v9/cIf0MaFghTW1gZgptCv51PG6wtenn4zwag.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.font-cyber {
+  font-family: 'Cyber', sans-serif;
+  letter-spacing: 1px;
+}
+
+.glitch-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text:hover::before {
+  animation: glitch-anim 2s infinite linear alternate-reverse;
+  left: 2px;
+  text-shadow: -1px 0 #00F0FF;
+  clip: rect(44px, 450px, 56px, 0);
+}
+
+.glitch-text:hover::after {
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+  left: -2px;
+  text-shadow: 1px 0 #BD00FF;
+  clip: rect(44px, 450px, 46px, 0);
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(30px, 9999px, 10px, 0); }
+  10% { clip: rect(54px, 9999px, 84px, 0); }
+  20% { clip: rect(67px, 9999px, 15px, 0); }
+  30% { clip: rect(19px, 9999px, 95px, 0); }
+  40% { clip: rect(32px, 9999px, 64px, 0); }
+  50% { clip: rect(71px, 9999px, 43px, 0); }
+  60% { clip: rect(86px, 9999px, 12px, 0); }
+  70% { clip: rect(25px, 9999px, 35px, 0); }
+  80% { clip: rect(76px, 9999px, 88px, 0); }
+  90% { clip: rect(31px, 9999px, 56px, 0); }
+  100% { clip: rect(10px, 9999px, 85px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(65px, 9999px, 91px, 0); }
+  10% { clip: rect(37px, 9999px, 82px, 0); }
+  20% { clip: rect(54px, 9999px, 43px, 0); }
+  30% { clip: rect(73px, 9999px, 23px, 0); }
+  40% { clip: rect(41px, 9999px, 56px, 0); }
+  50% { clip: rect(19px, 9999px, 72px, 0); }
+  60% { clip: rect(85px, 9999px, 62px, 0); }
+  70% { clip: rect(36px, 9999px, 87px, 0); }
+  80% { clip: rect(52px, 9999px, 31px, 0); }
+  90% { clip: rect(61px, 9999px, 45px, 0); }
+  100% { clip: rect(94px, 9999px, 16px, 0); }
+}
